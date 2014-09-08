@@ -6,12 +6,14 @@ var pyApp = require('./module/pyApp'),
 exports.gotoOpus = function(req, res){
     var appCode = req.params.id;
     var appInfo = {};
+    var appId = '';
     async.series({
         findAppByCode: function(done){
             pyApp.getByAppCode(appCode, function(err, info){
                 if(!err){
                     if(null != info){
                         appInfo = info;
+                        appId = info._id;
                         done();
                     }else{
                         done('该APP不存在，请检查。');
@@ -22,8 +24,9 @@ exports.gotoOpus = function(req, res){
             });
         },
         updateApp: function(done){
+            delete appInfo._id;
             appInfo.totalNumber = appInfo.totalNumber + 1;
-            pyApp.updateApp(appInfo._id, appInfo, function(err, info){
+            pyApp.updateApp(appId, appInfo, function(err, info){
                 if(!err){
                     if(null != info){
                         appInfo = info;
