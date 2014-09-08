@@ -73,6 +73,7 @@ exports.insertApp = function(req, res){
 exports.updateApp = function(req, res){
     var answer = req.body.answer;
     var appCode = req.body.code;
+    var appId = '';
     var appInfo = {};
     async.series({
         findAppByCode: function(done){
@@ -80,6 +81,7 @@ exports.updateApp = function(req, res){
                 if(!err){
                     if(null != info){
                         appInfo = info;
+                        appId = info._id;
                         done();
                     }else{
                         done('该APP不存在，请检查。');
@@ -90,10 +92,11 @@ exports.updateApp = function(req, res){
             });
         },
         update: function(done){
+            delete appInfo._id;
             appInfo.answer[answer] = Number(appInfo.answer[answer]) + 1;
             appInfo.useNumber = appInfo.useNumber + 1;
             
-            pyApp.updateApp(appInfo._id, appInfo, function(err, info){
+            pyApp.updateApp(appId, appInfo, function(err, info){
                 if(!err){
                     if(null != info){
                         appInfo = info;

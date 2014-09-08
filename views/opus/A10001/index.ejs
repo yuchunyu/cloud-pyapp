@@ -250,7 +250,6 @@ function answer(index){
         url: '/opus/postAnswer',
         data: {code:code, answer : tempArr[index]},
         success: function(result){
-        	console.log(result);
 	        $('.explain li').each(function(index){
 				$(this).css({'display':'none'});
 			});
