@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>你靠什么能出人头地?</title>
+		<script src="../../js/jquery.js"></script>
+		<style type="text/css">
+			*{margin:0; padding:0;}
+			li{list-style:none;}
+			img{border:none;}
+			a{text-decoration:none;}
+			html,body{height:100%;background: #ccc;}
+			.headBar{line-height: 50px;background: #c30;color:#fff;text-align: center;border-bottom: 4px solid #900;-webkit-box-shadow:0 3px 6px rgba(0, 0, 0, .175);box-shadow:0 3px 6px rgba(0, 0, 0, .175);}
+			.contentBar{background: #eee;border-left: #fff 2px solid;border-right: 2px #999 solid;border-bottom: 2px #666 solid;margin: 0 5%; height:80%;padding: 10px;color:#930;font-size: 1.3em;text-align: center;}
+			.explain{height: 100%;}
+			.explain li{height: 100%;position: relative;}
+			.explain pre{word-wrap:break-word; word-spacing:normal; text-overflow: hidden ;text-align: left;}
+			.explain b{padding: 15px 15px;background:#930;color: #ddd;}
+			.pageBox{display: none;}
+			.pageBox_title{height:70%;}
+			.pageBox_content{position: absolute;bottom: 0px;overflow: hidden;width: 100%;}
+			.pageBox_title div{width:100%;padding-bottom: 40px;padding-top: 40px;}
+			.w50{width: 50%;color:#fff;height: 100px;line-height: 100px;}
+			.fl{float: left;}
+			.red{background: #FF6666;}
+			.blue{background: #99CCFF;}
+			.pageBox i{position: fixed;top: 60px;right: 30px;font-size: 16px;}
+		</style>
+	</head>
+	<body>
+		<div class="headBar">
+			<strong><b>你靠什么能出人头地?</b></strong>
+		</div>
+		<div class="contentBar">
+			<ul class="explain">
+				<li class="pageBox">
+					<pre>
+    我们生活在一个平坦的世界里，至少表面上看起来是这样。开放、平等、自由、创新、平民参与，是行走于这个世界的通行法则。
+    然而，这样的结果导致了世界永远不可能是平的，行走中，你终将发现，只有小众人有权占据这世界上极大部分资源、财富，以及众人仰视的目光。
+    而你，能成为这金字塔尖的少数人之一吗，你能靠什么出人头地？</pre>
+					</br>
+					</br>
+					<b onclick="gotoPage(1)">让我们开始吧</b>
+					<div class="pageBox_content">
+						<hr />
+						<div style="font-size:0.6em;line-height: 30px;">目前有<font style="color:#0099FF"><%= appInfo.totalNumber %></font>个朋友参与这个测试</div>
+						<div style="font-size:0.6em;line-height: 20px;">目前有<font style="color:#0099FF"><%= appInfo.useNumber %></font>个朋友提交了答案</div>
+						<input type="hidden" value="<%= appInfo.code %>" id="code">
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							1、你非常能唠叨么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(2)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(3)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							2、有很多经过别人介绍认识的朋友吗?
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(4)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(3)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							3、你字迹潦草么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(5)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(4)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							4、即便很累的时候，也会神彩奕奕地出现在他人面前么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(6)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(5)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							5、如果你现在拥有了足够奢侈一生的财富，你觉得你还会继续工作吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(7)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(6)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							6、你对自己的本事有百分百的自信吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(8)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(7)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							7、在父母眼里，你是一个比较听话的孩子吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(10)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(9)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							8、有许多人都说过你聪明么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(12)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(10)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							9、你认为今天所得到的一切，都是靠自己得来的吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(13)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(11)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							10、到现在为止，几乎没尝试过失败的感觉，是么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(11)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(14)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							11、你觉得自己几乎没付出过什么努力么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="answer(5)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(12)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							12、你确定自己是一个很招人待见的人吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(14)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(13)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							13、是否有很多人肯定你的能力么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="answer(2)">Yes</div>
+						<div class="w50 fl blue" onclick="answer(3)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							14、如果你遇到了麻烦，你能想到很多可以出手相助的人么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="answer(4)">Yes</div>
+						<div class="w50 fl blue" onclick="answer(1)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div>
+						<img src="../../image/A10001.jpg" width="100px" style="margin:5px; padding:5px;border:3px #fff solid;border-radius: 50%;">
+					</div>
+					<div style="width:100%;text-align: left;padding:5px;">
+						<strong>测试结果：</strong>
+					</div>
+					<div style="font-size:0.8em;width:100%;text-align: left;padding:5px;">
+						有<font style="color:#0099FF" id="percentage">0%</font>的人，和你一样，靠<font style="color:#0099FF" id="answerTitle">**</font>来出人头地的。
+					</div>
+					<div style="width:100%;text-align: left;padding:5px;font-size:0.6em;" id="answerContent">
+						
+					</div>
+					<i>分享</i>
+				</li>
+			</ul>
+		</div>
+		<div style="font-size:6px;position: fixed;bottom:2px;right:2px;color:#555;">
+			Yves[461836324]出品 No.<%= appInfo.code %>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+function gotoPage(index){
+	$('.explain li').each(function(index){
+		$(this).css({'display':'none'});
+	});
+	$('.explain li').eq(index).fadeIn("slow");
+}
+var answerArr = [
+	{title:'美色', content:'除了天生的容貌，美色同时涵盖了气质、品味、举止、音色等诸多因素，无论你占据了其中哪一项资源，总之，你确有让人眼前一亮、心情为之愉悦的本事。上位者的心思通常变幻莫测，只消一眼就决定了你的前途命运，你会不会被选中，往往就在这一念之间。而你如果恰好具有能令人舒服、愉悦的力量，相信，谁都愿意给你这个机会，让你从此青云直上。'},
+	{title:'才能', content:'只要一眼，就可以肯定你是聪明、干练、能力出众的人，人们可以从你的表情中读出如下信息：自信、骄傲、意气风发。你的大脑时刻保持着高速运转，所有计划与应对方案可以在你头脑里迅速成形，同时以精准、清晰的语言将其完美表达。非凡的才能是你最大的人生资本，让你无论在哪里都是最出色、最引人注目的几人之一。如果你可以在人生阅历中再练就一番处事的智慧，那么，成功之于你实属必然。'},
+	{title:'智慧', content:'你的能力并非卓尔不群，而你也不像是会为了什么付出巨大努力的人，同时你傲慢本质也注定了你不可能去讨得所有人喜欢。不过，幸好，你是一个聪明的人，懂分寸，知进退。你没那个本事把事情做到完美，但却可以把事情做得最周全，做到对自己最好的地步。你清楚地知道什么时候该做什么，什么东西是拼了命也要争来的，还有什么人是一定不能得罪的。这是你处事的智慧，别人不见得看得透，然而它确实助你离成功越来越近。'},
+	{title:'人脉', content:'你天生具备一种虏获人心的魅力，你让人感觉亲近、聪慧、有趣味且值得信赖。你可以在不知不觉间和人熟稔好像多年的老朋友，人家也可以毫不忌讳地向你倾诉深藏的心事。你是一个八面玲珑的人，能够很自然地适应对方的节奏调整自己讲话的方式，因此，共事的人喜欢你，上司长辈同样看重你。而你为人处事方面的大气、宽容、周全，也为自己累积了不少人际资本，在你成功之路上，总有人愿意在关键时刻助你一臂之力。'},
+	{title:'幸运', content:'你是一个有福之人，在你风光的时候，锦上添花的人不少，而在危难时分，雪中送炭的人同样有之，每每接近山穷水尽的当口，总会出现柳暗花明的转机。因此，你一路走来，都是顺风顺水。可以想见，你的成功几乎是命中注定了。当然你同样需要明白，嚣张与懈怠可能会折了自己的福。因此，你更加要有虚怀若谷的气度和坚持不懈的努力，不要平白荒废了上天的福祉。'},
+];
+function answer(index){
+	var tempArr = ['a','b','c','d','e'];
+	var code = $('#code').val();
+	$.ajax({
+        type: 'POST',
+        url: '/opus/postAnswer',
+        data: {code:code, answer : tempArr[index]},
+        success: function(result){
+	        $('.explain li').each(function(index){
+				$(this).css({'display':'none'});
+			});
+			$('#percentage').html(Math.ceil((result.content.answer[tempArr[index]] / result.content.useNumber) * 100) + '%');
+			$('#answerTitle').html(answerArr[index].title);
+			$('#answerContent').html(answerArr[index].content);
+			$('.explain li:last').fadeIn("slow");
+			document.title = '有' + Math.ceil((result.content.answer[tempArr[index]] / result.content.useNumber) * 100) + '%的人，和我一样，靠' + answerArr[index].title + '来出人头地的，你呢？'; 
+        }
+    });
+
+}
+gotoPage(0);
+
+
+</script>
