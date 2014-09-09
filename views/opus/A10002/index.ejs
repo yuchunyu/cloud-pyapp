@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>谁是你的最佳合伙人？</title>
+		<script src="../../js/jquery.js"></script>
+		<style type="text/css">
+			*{margin:0; padding:0;}
+			li{list-style:none;}
+			img{border:none;}
+			a{text-decoration:none;}
+			html,body{height:100%;background: #ccc;}
+			.headBar{line-height: 50px;background: #c30;color:#fff;text-align: center;border-bottom: 4px solid #900;-webkit-box-shadow:0 3px 6px rgba(0, 0, 0, .175);box-shadow:0 3px 6px rgba(0, 0, 0, .175);}
+			.contentBar{background: #eee;border-left: #fff 2px solid;border-right: 2px #999 solid;border-bottom: 2px #666 solid;margin: 0 5%; padding: 10px;color:#930;font-size: 1.3em;text-align: center;overflow: hidden;margin-bottom: 5px;min-height: 300px;height: 80%;}
+			.explain{overflow: hidden;height:100%;}
+			.explain li{height:100%;}
+			.explain pre{word-wrap:break-word; word-spacing:normal; text-overflow: hidden ;text-align: left;}
+			.explain b{padding: 15px 15px;background:#930;color: #ddd;display: block;}
+			.pageBox{display: none;}
+			.pageBox_title{height:70%;display: block;}
+			.pageBox_content{overflow: hidden;width: 100%;height: 30%;}
+			.pageBox_title div{width:100%;padding-bottom: 40px;padding-top: 40px;}
+			.w50{width: 50%;color:#fff;height: 100%;line-height: 100px;font-size: 2em;display: block;}
+			.fl{float: left;}
+			.red{background: #FF6666;}
+			.blue{background: #99CCFF;}
+			.pageBox i{position: absolute;top: 10px;right: 20px;font-size: 0.5em;color:#fff;}
+		</style>
+		<div id='wx_pic' style='margin:0 auto;display:none;'>
+			<img src='../../image/A10002.jpg' />
+		</div>
+	</head>
+	<body>
+		<div class="headBar">
+			<strong><b>谁是你的最佳合伙人？</b></strong>
+		</div>
+		<div class="contentBar">
+			<ul class="explain">
+				<li class="pageBox">
+					<div style="display:block;"><pre>
+　　最近正在上映的《中国合伙人》，告诉我们创业的道路并不好走，除了有经济的压力之外，同时心理的负担也非常的重，因此很多人都会选择和合伙人一起来合作，但一旦选择了合伙人，就会涉及到合不合伙的问题，下面进行一个心理测试，看谁是您的最佳合伙人。</pre>
+					</div>
+					<div style="display:block;padding:10px;">
+						<b onclick="gotoPage(1)">让我们开始吧</b>
+					</div>
+					<div class="pageBox_content">
+						<hr />
+						<div style="font-size:0.6em;line-height: 30px;">目前有<font style="color:#0099FF"><%= appInfo.totalNumber %></font>个朋友参与这个测试</div>
+						<div style="font-size:0.6em;line-height: 20px;">目前有<font style="color:#0099FF"><%= appInfo.useNumber %></font>个朋友提交了答案</div>
+						<input type="hidden" value="<%= appInfo.code %>" id="code">
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							读书时你在学校的成绩属于中上么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(2)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(4)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							你时常觉得自己有无限的潜力吗?
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(3)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(4)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							你认为男生比女生聪明么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(7)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(5)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							在学校时你非常注重自己的仪表吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(6)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(8)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							你经常是人群里的决策者吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(7)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(6)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							你希望以后的职业是可以大展手脚的职业么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(9)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(10)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							你在朋友圈里是大家喜欢的乖孩子吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(8)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(9)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							有许多人都说过你聪明么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="gotoPage(9)">Yes</div>
+						<div class="w50 fl blue" onclick="gotoPage(10)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							有一天你发烧了，你会忍着病去上课、上班吗？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="answer(0)">Yes</div>
+						<div class="w50 fl blue" onclick="answer(2)">No</div>
+					</div>
+				</li>
+				<li class="pageBox">
+					<div class="pageBox_title">
+						<div>
+							在外面时你非常注重自己的仪表么？
+						</div>
+					</div>
+					<div class="pageBox_content">
+						<div class="w50 fl red" onclick="answer(1)">Yes</div>
+						<div class="w50 fl blue" onclick="answer(3)">No</div>
+					</div>
+				</li>
+				
+				<li class="pageBox">
+					<div>
+						<img src="../../image/A10002.jpg" width="100px" style="margin:5px; padding:5px;border:3px #fff solid;border-radius: 50%;">
+					</div>
+					<div style="width:100%;text-align: left;padding:5px;">
+						<strong>测试结果：</strong>
+					</div>
+					<div style="font-size:0.8em;width:100%;text-align: left;padding:5px;">
+						有<font style="color:#0099FF" id="percentage">0%</font>的人，和你一样，认为<font style="color:#0099FF" id="answerTitle">**</font>是你的最佳合伙人。
+					</div>
+					<div style="width:100%;text-align: left;padding:5px;font-size:0.6em;" id="answerContent">
+						
+					</div>
+					<div id="ckepop" style="text-align:right;width:100%;overflow:hidden;">
+						<a style="float:right;font-size:6px;color:#555;margin:5px 5px 5px 5px;" href="javascript:;" onclick="jiathis_sendto('tqq');return false;" class="jiatitle"><span class="jtico jtico_tqq">腾讯微博</span></a>
+						<a style="float:right;font-size:6px;color:#555;margin:5px 5px 5px 5px;" href="javascript:;" onclick="jiathis_sendto('qzone');return false;" class="jiatitle"><span class="jtico jtico_qzone">QQ空间</span></a>	
+						<span class="jiathis_txt" style="float:right;font-size:6px;color:#555;margin:5px 5px 5px 5px;">分享到：</span>
+						<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>
+						</div>
+					<i>分享↗</i>
+				</li>
+			</ul>
+		</div>
+		<div style="overflow:hidden;">
+			<div style="float:right;font-size:12px;color:#555;margin:5px 25px 5px 5px;text-align:right;">
+				Yves[461836324]出品 No.<%= appInfo.code %>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+function gotoPage(index){
+	$('.explain li').each(function(index){
+		$(this).css({'display':'none'});
+	});
+	$('.explain li').eq(index).fadeIn("slow");
+}
+var answerArr = [
+	{title:'小鸟依人的合伙人', content:'你从小就有非常强的领导欲，希望自己成为团体当中的领导者，讨厌被朋友差遣；不过你又非常害怕独处，不喜欢落单，能够跟这样的你相处甚欢的。如果他无法自己下决定，处然会向你求助，请你帮忙。看到因为你的帮助而解决了困扰自己已久的难题，你的心情就会觉得十分高兴，心灵上也会得到极大的满足，但是也并非人人能够忍受爱发号施令的你，如果没有那么好的运气碰到这样的排档，你还是收敛一点比较好噢。'},
+	{title:'若即若离的合伙人', content:'你不喜欢跟朋友在一起，有强烈的个人主义，这不是说你讨厌朋友，你只是不喜欢总是和大家粘在一起而已，所以能跟你合得来的，是像你一样重视私人时间，抱持个人主义的女孩，只在想见面的时候见面，不会去干涉彼此的生活的豪爽合伙人。或许在周围人看来，你们之间的感情一定是冷淡肤浅的，但也只有你知道你们的关系正是“君子之交淡如水”的最好写照。'},
+	{title:'志趣相投的合伙人', content:'你最喜欢跟几个好朋友腻在一起谈论彼此共同感兴趣的话题，所以当然你就跟拥有同样兴趣的人较合得来，跟朋友在一起时，你会跟他们谈论同一部电视剧、或流行的话题，这样的你最适合跟志趣相投、喜欢腻在一起的人当朋友，如果对方跟自己同一个牌子的用品，话题就会滔滔不绝，也会加深你们的感情。而且你很擅长处理人际间的互动问题，即使两人整天腻在一起也不会发生冲突更不会无话可说。'},
+	{title:'担当有为的合伙人', content:'最适合你的合伙人，是能够担起大担子的合伙人，你是个比较不爱操心的人，但是你绝对是个负责的人，但是你还是想找个能帮忙照看大局的人。你欣赏那种能掌控的人，你也愿意被掌控着，最适合你的合伙人莫过于此了。在生意场上，你不愿意花那么多的心思去尔虞我诈，反而喜欢世外桃源的与世无争，但是人活着总要赚钱，这也是你的无奈之处。如果有个人能够你出钱，他出面掌控的话，那么一定会让你十分的开心的。'}
+];
+function answer(index){
+	var tempArr = ['a','b','c','d'];
+	var code = $('#code').val();
+	$.ajax({
+        type: 'POST',
+        url: '/opus/postAnswer',
+        data: {code:code, answer : tempArr[index]},
+        success: function(result){
+	        $('.explain li').each(function(index){
+				$(this).css({'display':'none'});
+			});
+			$('#percentage').html(Math.ceil((result.content.answer[tempArr[index]] / result.content.useNumber) * 100) + '%');
+			$('#answerTitle').html(answerArr[index].title);
+			$('#answerContent').html(answerArr[index].content);
+			$('.explain li:last').fadeIn("slow");
+			document.title = '有' + Math.ceil((result.content.answer[tempArr[index]] / result.content.useNumber) * 100) + '%的人，和我一样，认为' + answerArr[index].title + '是我的最佳合伙人，你是不是我内定的小伙伴呢？'; 
+        }
+    });
+
+}
+gotoPage(0);
+
+
+</script>
