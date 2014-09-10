@@ -15,7 +15,7 @@
 			.contentBar{background: #eee;border-left: #fff 2px solid;border-right: 2px #999 solid;border-bottom: 2px #666 solid;margin: 0 5%; padding: 10px;color:#930;font-size: 1.3em;text-align: center;overflow: hidden;margin-bottom: 5px;min-height: 300px;height: 80%;}
 			.explain{overflow: hidden;height:100%;}
 			.explain li{height:100%;}
-			.explain pre{word-wrap:break-word; word-spacing:normal; text-overflow: hidden ;text-align: left;}
+			.explain pre{word-wrap:break-word; word-spacing:normal; text-align: left;}
 			.explain b{padding: 15px 15px;background:#930;color: #ddd;display: block;}
 			.pageBox{display: none;}
 			.pageBox_title{height:70%;display: block;}
@@ -218,7 +218,7 @@ function answer(index){
 			});
 			$('#percentage').html(Math.ceil((result.content.answer[tempArr[index]] / result.content.useNumber) * 100) + '%');
 			$('#answerTitle').html(answerArr[index].title);
-			$('#answerContent').html(answerArr[index].content);
+			$('#answerContent').html('<pre>' + answerArr[index].content + '</pre>');
 			$('.explain li:last').fadeIn("slow");
 			document.title = '有' + Math.ceil((result.content.answer[tempArr[index]] / result.content.useNumber) * 100) + '%的人，和我一样，认为' + answerArr[index].title + '是我的最佳合伙人，你是不是我内定的小伙伴呢？'; 
         }
